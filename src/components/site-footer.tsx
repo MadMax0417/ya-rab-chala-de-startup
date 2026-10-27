@@ -72,11 +72,26 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 py-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono text-[8px] uppercase tracking-[0.12em] text-paper/55">
-            © {year} Ya Rab Chala de Startups. All rights reserved. Mostly
-            delusions.
-          </p>
+        <div className="flex flex-col gap-4 py-6 sm:flex-row sm:items-end sm:justify-between">
+          <div className="space-y-2">
+            <p className="font-mono text-[8px] uppercase tracking-[0.12em] text-paper/55">
+              © {year} Ya Rab Chala de Startups. All rights reserved. Mostly
+              delusions.
+            </p>
+            <p className="font-mono text-[8px] uppercase tracking-[0.12em] text-paper/55">
+              Made with love and Diet Coke by{" "}
+              <a
+                href="https://x.com/KiranRautk0779"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 text-paper/80 underline decoration-paper/30 underline-offset-2 transition hover:text-paper hover:decoration-paper"
+              >
+                Kiran Raut
+                <span aria-hidden="true">↗</span>
+                <span className="sr-only">(opens in a new tab)</span>
+              </a>
+            </p>
+          </div>
           <a
             href="#top"
             className="inline-flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.12em] text-paper/55 transition hover:text-paper"
