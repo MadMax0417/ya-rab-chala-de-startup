@@ -11,8 +11,9 @@ Everything on the site is fictional: the company, products, investors, metrics, 
 - TypeScript
 - Tailwind CSS 4
 - Lucide icons
+- Vercel Web Analytics
 
-No backend, API routes, authentication, database, or third-party analytics.
+No backend, API routes, authentication, or database. Analytics is limited to cookieless pageviews from Vercel Web Analytics.
 
 ## Getting started
 
@@ -33,6 +34,22 @@ NEXT_PUBLIC_SITE_URL=https://your-domain.example
 
 This value is used for the canonical URL, Open Graph metadata, `robots.txt`, and `sitemap.xml`. If it is not set, the app falls back to `http://localhost:3000`.
 
+## Analytics
+
+Vercel Web Analytics collects cookieless pageviews through the `<Analytics />` component in `src/app/layout.tsx`. Enable it once per project under **Analytics → Enable** in the Vercel dashboard, then redeploy — collection starts with the next deployment.
+
+The Hobby plan includes 50,000 events per month with a one-month reporting window. UTM filtering requires Pro with the Web Analytics Plus add-on, and custom events require Pro, so campaign tags are recorded but not visible in the dashboard on Hobby.
+
+### Sharing links
+
+`/discord` rewrites to `/` and keeps its own URL (see `next.config.ts`), so Discord visits appear as a separate page in the **Pages** panel without a paid plan. Tag the link anyway so the data exists if the project ever moves to a paid plan:
+
+```text
+https://your-domain.example/discord?utm_source=discord&utm_medium=community&utm_campaign=launch_v1&utm_content=announcement
+```
+
+Vary only `utm_content` between posts, and hide the tags behind Discord markdown (`[Take the Startup Survival Test](url)`). Discord caches link previews per exact URL, so a new UTM string produces a new embed. Don't add UTMs to internal anchors such as `#survival`; the share flow already strips them.
+
 ## Scripts
 
 | Command | Purpose |
@@ -48,7 +65,7 @@ This value is used for the canonical URL, Open Graph metadata, `robots.txt`, and
 ```text
 src/
   app/
-    layout.tsx            Fonts, metadata, root layout
+    layout.tsx            Fonts, metadata, analytics, root layout
     page.tsx              Section composition
     globals.css           Theme tokens, motion, dialog, layout primitives
     opengraph-image.tsx   Generated 1200 × 630 social card
