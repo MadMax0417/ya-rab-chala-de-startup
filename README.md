@@ -32,7 +32,7 @@ Copy `.env.example` to `.env.local` and set the canonical public URL before depl
 NEXT_PUBLIC_SITE_URL=https://your-domain.example
 ```
 
-This value is used for the canonical URL, Open Graph metadata, `robots.txt`, and `sitemap.xml`. If it is not set, the app falls back to `http://localhost:3000`.
+This value is used for the canonical URL, Open Graph metadata, `robots.txt`, and `sitemap.xml`. During a Vercel build it falls back to `VERCEL_PROJECT_PRODUCTION_URL` when unset; everywhere else it falls back to `http://localhost:3000`.
 
 ## Analytics
 
