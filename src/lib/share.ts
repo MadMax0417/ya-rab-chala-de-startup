@@ -34,7 +34,11 @@ export async function copyTextToClipboard(text: string): Promise<boolean> {
 function getShareUrl() {
   const url = new URL(window.location.href);
   url.hash = "survival";
-  url.search = "";
+  url.search = new URLSearchParams({
+    utm_source: "share",
+    utm_medium: "referral",
+    utm_campaign: "survival_share",
+  }).toString();
   return url.toString();
 }
 

@@ -42,13 +42,25 @@ The Hobby plan includes 50,000 events per month with a one-month reporting windo
 
 ### Sharing links
 
-`/discord` rewrites to `/` and keeps its own URL (see `next.config.ts`), so Discord visits appear as a separate page in the **Pages** panel without a paid plan. Tag the link anyway so the data exists if the project ever moves to a paid plan:
+Each channel has an alias that rewrites to `/` but keeps its own URL (see `next.config.ts`), so per-channel traffic appears as separate rows in the **Pages** panel — no paid plan required. Tag the links as well so the data exists if the project ever moves to a paid plan.
+
+| Channel | Path | `utm_source` | `utm_medium` |
+| --- | --- | --- | --- |
+| Discord | `/discord` | `discord` | `community` |
+| Instagram | `/instagram` | `instagram` | `social` |
+| X | `/x` | `x` | `social` |
+| WhatsApp | `/whatsapp` | `whatsapp` | `messaging` |
 
 ```text
 https://your-domain.example/discord?utm_source=discord&utm_medium=community&utm_campaign=launch_v1&utm_content=announcement
+https://your-domain.example/instagram?utm_source=instagram&utm_medium=social&utm_campaign=launch_v1&utm_content=bio
+https://your-domain.example/x?utm_source=x&utm_medium=social&utm_campaign=launch_v1&utm_content=post
+https://your-domain.example/whatsapp?utm_source=whatsapp&utm_medium=messaging&utm_campaign=launch_v1&utm_content=group
 ```
 
-Vary only `utm_content` between posts, and hide the tags behind Discord markdown (`[Take the Startup Survival Test](url)`). Discord caches link previews per exact URL, so a new UTM string produces a new embed. Don't add UTMs to internal anchors such as `#survival`; the share flow already strips them.
+Vary only `utm_content` between placements: `announcement` for Discord, `bio` / `story` / `reel` for Instagram, `post` / `reply` for X, `status` / `group` / `dm` for WhatsApp. Keep `utm_campaign` identical across channels so they stay comparable.
+
+Hide the tags behind link text (`[Take the Startup Survival Test](url)`). Instagram and WhatsApp cache link previews aggressively; if the Open Graph card ever changes, bump `utm_content` or add a throwaway parameter to force a refetch. Don't add UTMs to internal anchors such as `#survival` — shares from the site are tagged automatically with `utm_source=share&utm_medium=referral&utm_campaign=survival_share`.
 
 ## Scripts
 
