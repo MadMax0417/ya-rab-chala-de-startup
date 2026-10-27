@@ -58,16 +58,13 @@ export default function SiteHeader() {
           <span className="grid h-9 w-9 shrink-0 place-items-center bg-ink font-display text-[11px] font-black tracking-[-0.04em] text-paper">
             YR
           </span>
-          <span className="hidden min-w-0 sm:block">
-            <span className="block truncate font-display text-[13px] font-extrabold uppercase leading-none tracking-[-0.02em]">
+          <span className="min-w-0">
+            <span className="block truncate font-display text-[11.5px] font-extrabold uppercase leading-none tracking-[-0.02em] min-[360px]:text-[13px]">
               Ya Rab Chala de Startups
             </span>
-            <span className="mt-1 block font-mono text-[8px] uppercase tracking-[0.22em] text-muted">
+            <span className="mt-1 hidden font-mono text-[8px] uppercase tracking-[0.22em] text-muted sm:block">
               A very serious company
             </span>
-          </span>
-          <span className="font-display text-sm font-extrabold uppercase tracking-[-0.03em] sm:hidden">
-            Ya Rab
           </span>
         </a>
 
