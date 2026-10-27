@@ -26,13 +26,13 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ### Environment
 
-Copy `.env.example` to `.env.local` and set the canonical public URL before deploying:
+Copy `.env.example` to `.env.local` only if you need to override the canonical public URL:
 
 ```bash
 NEXT_PUBLIC_SITE_URL=https://your-domain.example
 ```
 
-This value is used for the canonical URL, Open Graph metadata, `robots.txt`, and `sitemap.xml`. During a Vercel build it falls back to `VERCEL_PROJECT_PRODUCTION_URL` when unset; everywhere else it falls back to `http://localhost:3000`.
+This value is used for the canonical URL, Open Graph metadata, `robots.txt`, and `sitemap.xml`. It must be the real `https` domain — localhost values are ignored in production builds, because social crawlers fetch the preview image from this origin. Leave it unset on Vercel to use `VERCEL_PROJECT_PRODUCTION_URL` automatically; everywhere else the fallback is `http://localhost:3000`.
 
 ## Analytics
 
